@@ -1,0 +1,76 @@
+@use '../styles/colors.module.scss' as colors;
+
+.main {
+  background-color: colors.$yellow;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.titleContainer {
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: xxx-large;
+  color: colors.$purple;
+  margin: 0;
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px colors.$black;
+}
+
+.subtitle {
+  color: colors.$orange;
+  font-size: xx-large;
+  margin: 0;
+  text-shadow: 3px 3px colors.$black;
+}
+
+.primaryButton {
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+  border: 1px solid colors.$black;
+  background-color: colors.$pink;
+  box-shadow: 3px 3px colors.$black;
+  color: colors.$black;
+  padding: 15px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px colors.$black;
+  }
+}
+
+.socialButtonsContainer {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.secondaryButton {
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+  border: 2px solid colors.$black;
+  box-shadow: 2px 2px colors.$pink, 3px 3px colors.$black;
+  background-color: colors.$black;
+  color: colors.$white;
+  padding: 0.5rem;
+  border-radius: 15px;
+  cursor: pointer;
+
+  & > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: colors.$white;
+  }
+
+  &:hover {
+    box-shadow: 1px 1px colors.$pink, 2px 2px colors.$black;
+  }
+}
