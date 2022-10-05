@@ -1,10 +1,11 @@
 @use '../styles/colors.module.scss' as colors;
+@use '../styles/mixins.module.scss' as mixins;
 
 .main {
+  display: flex;
   background-color: colors.$yellow;
   height: 100vh;
   width: 100vw;
-  display: flex;
   padding: 5rem;
 
   @media (max-width: 900px) {
@@ -17,9 +18,7 @@
 }
 
 .leftContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include mixins.flex-center;
   flex-direction: column;
   height: 100%;
   flex-basis: 50%;
@@ -63,7 +62,7 @@
 }
 
 .socialButtonsContainer {
-  display: flex;
+  @include mixins.flex-center;
   gap: 1rem;
   margin: 1.5rem 0;
 }
@@ -92,9 +91,7 @@
 
 .consoleContainer {
   flex-basis: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include mixins.flex-center;
   flex-direction: column;
 }
 
@@ -116,19 +113,14 @@
 
 .topContainer {
   background-color: colors.$black;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
+  @include mixins.flex-center;
   height: 60%;
   border-radius: 15px 15px 0 0;
   padding: 1rem;
 }
 
 .bottomContainer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include mixins.flex-center;
   flex-direction: column;
   justify-content: space-between;
   height: 40%;
@@ -172,10 +164,10 @@
 
 .actionButtons {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem;
+  width: 100%;
 }
 
 .saveButton {
@@ -206,6 +198,7 @@
   height: 30px;
   width: 30px;
   cursor: pointer;
+  @include mixins.flex-center;
 
   &:hover {
     box-shadow: 2px 2px colors.$black;
