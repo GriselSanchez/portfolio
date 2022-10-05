@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import styles from './Header.module.scss'
 import GithubIcon from 'assets/github.svg'
 import LinkedinIcon from 'assets/linkedin.svg'
@@ -6,7 +8,8 @@ import Speakers from 'assets/speakers.svg'
 import { usePixelArt } from 'hooks/usePixelArt'
 
 export default function Header() {
-  const table = usePixelArt(64, 64)
+  const [selectedColor, setSelectedColor] = useState('black')
+  const table = usePixelArt(32, 32, selectedColor)
 
   return (
     <div className={styles.main}>
@@ -51,12 +54,14 @@ export default function Header() {
                 <button className={styles.saveButton}>Save</button>
               </div>
               <div className={styles.consoleButtonsContainer}>
-                <button
-                  className={styles.consoleActionButton}
-                  style={{ gridColumn: 2, gridRow: 1 }}
-                >
-                  X
-                </button>
+                <div style={{ gridColumn: 2, gridRow: 1, position: 'relative' }}>
+                  <button className={styles.consoleActionButton}>X</button>
+                  <input
+                    type="color"
+                    className={styles.colorPicker}
+                    onChange={e => setSelectedColor(e.target.value)}
+                  />
+                </div>
                 <button
                   className={styles.consoleActionButton}
                   style={{ gridColumn: 3, gridRow: 2 }}

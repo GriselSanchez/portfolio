@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-export const usePixelArt = (height, width) => {
+export const usePixelArt = (height, width, selectedColor) => {
   const [isClicked, setIsClicked] = useState(false)
   const [points, setPoints] = useState([])
 
   const table = []
 
   const draw = (event, point) => {
-    event.currentTarget.style.backgroundColor = 'black'
+    event.currentTarget.style.backgroundColor = selectedColor
   }
 
   const onMouseDown = point => event => {
@@ -36,8 +36,8 @@ export const usePixelArt = (height, width) => {
           onMouseUp={onMouseUp}
           style={{
             backgroundColor: points.some(({ x, y }) => point.x === x && point.y === y)
-              ? 'black'
-              : '',
+              ? selectedColor
+              : 'white',
           }}
         />,
       )
