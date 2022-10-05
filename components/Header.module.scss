@@ -5,9 +5,16 @@
   height: 100vh;
   width: 100vw;
   display: flex;
+  padding: 5rem;
+}
+
+.leftContainer {
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 100%;
+  flex-basis: 50%;
 }
 
 .titleContainer {
@@ -17,7 +24,7 @@
 }
 
 .title {
-  font-size: xxx-large;
+  font-size: 54px;
   color: colors.$purple;
   margin: 0;
   margin-bottom: 1rem;
@@ -26,7 +33,7 @@
 
 .subtitle {
   color: colors.$orange;
-  font-size: xx-large;
+  font-size: 42px;
   margin: 0;
   text-shadow: 3px 3px colors.$black;
 }
@@ -73,4 +80,123 @@
   &:hover {
     box-shadow: 1px 1px colors.$pink, 2px 2px colors.$black;
   }
+}
+
+.consoleContainer {
+  flex-basis: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.console {
+  background: colors.$purple;
+  height: 650px;
+  width: 400px;
+  border: 2px solid colors.$black;
+  border-radius: 15px;
+  box-shadow: 8px 8px colors.$black;
+  display: flex;
+  flex-direction: column;
+}
+
+.topContainer {
+  background-color: colors.$black;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  border-radius: 15px 15px 0 0;
+}
+
+.bottomContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40%;
+  padding: 1.5rem 2.5rem;
+}
+
+.speakers {
+  align-self: flex-end;
+}
+
+.fakeButtons {
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 100%;
+
+  div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}
+
+.fakeRoundedButton {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background-color: colors.$black;
+}
+
+.fakeLongButton {
+  height: 15px;
+  width: 45px;
+  border-radius: 15px;
+  background-color: colors.$black;
+}
+
+.actionButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.saveButton {
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+  border: 1px solid colors.$black;
+  background-color: colors.$pink;
+  box-shadow: 3px 3px colors.$black;
+  color: colors.$black;
+  padding: 15px;
+  border-radius: 50%;
+  height: 80px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px colors.$black;
+  }
+}
+
+.consoleActionButton {
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+  border: 1px solid colors.$black;
+  background-color: colors.$orange;
+  box-shadow: 3px 3px colors.$black;
+  color: colors.$black;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 2px 2px colors.$black;
+  }
+}
+
+.consoleButtonsContainer {
+  display: grid;
+  grid-gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
