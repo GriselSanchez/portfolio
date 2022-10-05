@@ -1,15 +1,18 @@
 import { useState } from 'react'
-
-import { Speakers } from '@assets/index'
-import { usePixelArt, ACTIONS } from '@hooks/index'
+import { Speakers } from 'assets'
+import { usePixelArt, ACTIONS } from 'hooks'
 
 import styles from './ConsoleContainer.module.scss'
 
 export default function ConsoleContainer() {
-  const [selectedColor, setSelectedColor] = useState('black')
+  const [selectedColor, setSelectedColor] = useState()
   const [action, setAction] = useState(ACTIONS.DRAW)
 
-  const { table, reset } = usePixelArt({ height: 32, width: 32 }, selectedColor, action)
+  const { table, reset, DEFAULT_COLORS } = usePixelArt(
+    { height: 32, width: 32 },
+    selectedColor,
+    action,
+  )
 
   return (
     <div className={styles.consoleContainer}>
@@ -50,7 +53,7 @@ export default function ConsoleContainer() {
               <div onClick={() => setAction(ACTIONS.ERASE)} style={{ gridColumn: 3, gridRow: 2 }}>
                 <button
                   className={styles.consoleActionButton}
-                  onClick={() => setSelectedColor('white')}
+                  onClick={() => setSelectedColor(DEFAULT_COLORS.erased)}
                 >
                   Y
                 </button>

@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, EnvelopeIcon } from '@assets/index'
+import { GithubIcon, LinkedinIcon, EnvelopeIcon } from 'assets'
 
 import styles from './InfoContainer.module.scss'
 

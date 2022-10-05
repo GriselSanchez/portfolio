@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { ArrayUtils } from 'utils'
 
 export const ACTIONS = {
   DRAW: 1,
@@ -6,18 +7,21 @@ export const ACTIONS = {
   ERASE: 3,
 }
 
-export default function usePixelArt({ height, width }, selectedColor, action = ACTIONS.DRAW) {
+const DEFAULT_COLORS = {
+  painted: 'black',
+  erased: 'white',
+}
+
+export default function usePixelArt(
+  { height, width },
+  selectedColor = DEFAULT_COLORS.painted,
+  action = ACTIONS.DRAW,
+) {
   const [isClicked, setIsClicked] = useState(false)
 
   const table = []
-  const points = useMemo(
-    () => new Array(height).fill(false).map(() => new Array(width).fill(false)),
-    [],
-  )
-  const colors = useMemo(
-    () => new Array(height).fill(false).map(() => new Array(width).fill('white')),
-    [],
-  )
+  const points = useMemo(() => ArrayUtils.new2dArray(width, height, false), [])
+  const colors = useMemo(() => ArrayUtils.new2dArray(width, height, DEFAULT_COLORS.erased), [])
 
   const drawNear = (x, y) => {
     if (x >= width || y >= height || x < 0 || y < 0) return
@@ -30,28 +34,32 @@ export default function usePixelArt({ height, width }, selectedColor, action = A
     drawNear(x, y - 1)
   }
 
+  const changeBackgroundColor = (event, color) => {
+    if (event) event.currentTarget.style.backgroundColor = color
+  }
+
   const draw = ({ x, y }, event) => {
-    if (event) event.currentTarget.style.backgroundColor = selectedColor
+    changeBackgroundColor(event, selectedColor)
     points[x][y] = true
     colors[x][y] = selectedColor
   }
 
   const fill = ({ x, y }, event) => {
-    event.currentTarget.style.backgroundColor = selectedColor
+    changeBackgroundColor(event, selectedColor)
     drawNear(x, y)
   }
 
   const erase = ({ x, y }, event) => {
-    if (event) event.currentTarget.style.backgroundColor = 'white'
+    changeBackgroundColor(event, DEFAULT_COLORS.erased)
     points[x][y] = false
-    colors[x][y] = 'white'
+    colors[x][y] = DEFAULT_COLORS.erased
   }
 
   const reset = () => {
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
         points[i][j] = false
-        colors[i][j] = 'white'
+        colors[i][j] = DEFAULT_COLORS.erased
       }
     }
   }
@@ -103,5 +111,5 @@ export default function usePixelArt({ height, width }, selectedColor, action = A
     table.push(<tr key={i}>{columns}</tr>)
   }
 
-  return { table, reset }
+  return { table, reset, DEFAULT_COLORS }
 }
