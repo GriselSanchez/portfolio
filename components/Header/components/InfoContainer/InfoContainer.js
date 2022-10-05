@@ -10,17 +10,27 @@ export default function InfoContainer() {
         <h2 className={styles.subtitle}>A Frontend Engineer.</h2>
       </div>
       <div className={styles.socialButtonsContainer}>
-        <button className={styles.secondaryButton}>
+        <a
+          className={styles.secondaryButton}
+          href="https://github.com/griselsanchez"
+          target="_blank"
+        >
           <GithubIcon />
-        </button>
-        <button className={styles.secondaryButton}>
+        </a>
+        <a
+          className={styles.secondaryButton}
+          href="https://linkedin.com/in/griselsanchez"
+          target="_blank"
+        >
           <LinkedinIcon />
-        </button>
-        <button className={styles.secondaryButton}>
+        </a>
+        <a className={styles.secondaryButton} href="mailto: griselalmasanchez@gmail.com">
           <EnvelopeIcon />
-        </button>
+        </a>
       </div>
-      <button className={styles.primaryButton}>Resume</button>
+      <a className={styles.primaryButton} href="Grisel-Sanchez-CV.pdf" target="_blank">
+        Resume
+      </a>
     </div>
   )
 }
