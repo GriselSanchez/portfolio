@@ -8,10 +8,11 @@
   padding: 5rem;
 
   @media (max-width: 900px) {
-    display: inline;
-    height: auto;
+    display: grid;
+    grid-template-columns: 100%;
     gap: 50px;
-    padding: 2rem;
+    height: auto;
+    padding: 5rem 2rem;
   }
 }
 
