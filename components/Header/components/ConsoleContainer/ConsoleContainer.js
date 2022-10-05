@@ -1,12 +1,15 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Speakers } from 'assets'
-import { usePixelArt, ACTIONS } from 'hooks'
+import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
 
 import styles from './ConsoleContainer.module.scss'
 
 export default function ConsoleContainer() {
   const [selectedColor, setSelectedColor] = useState()
   const [action, setAction] = useState(ACTIONS.DRAW)
+
+  const canvasRef = useRef()
+  const downloadPixelArt = useDownloadImage(canvasRef.current, 'Pixel-Art')
 
   const { table, reset, DEFAULT_COLORS } = usePixelArt(
     { height: 32, width: 32 },
@@ -18,7 +21,7 @@ export default function ConsoleContainer() {
     <div className={styles.consoleContainer}>
       <div className={styles.console}>
         <div className={styles.topContainer}>
-          <table className={styles.pixelArtTable}>
+          <table ref={canvasRef} className={styles.pixelArtTable}>
             <tbody>{table}</tbody>
           </table>
         </div>
@@ -35,7 +38,9 @@ export default function ConsoleContainer() {
           </div>
           <div className={styles.actionButtons}>
             <div>
-              <button className={styles.saveButton}>Save</button>
+              <button className={styles.saveButton} onClick={() => downloadPixelArt()}>
+                Save
+              </button>
             </div>
             <div className={styles.consoleButtonsContainer}>
               <div

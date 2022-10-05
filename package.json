@@ -8,13 +8,14 @@
     "export": "next export"
   },
   "dependencies": {
+    "html2canvas": "^1.4.1",
     "next": "^12.1.5",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
   "devDependencies": {
+    "@svgr/webpack": "^6.4.0",
     "cypress": "^10.0.3",
-    "sass": "^1.55.0",
-    "@svgr/webpack": "^6.4.0"
+    "sass": "^1.55.0"
   }
 }
