@@ -1,10 +1,13 @@
 import styles from './Header.module.scss'
-import GithubIcon from '../assets/github.svg'
-import LinkedinIcon from '../assets/linkedin.svg'
-import EnvelopeIcon from '../assets/envelope.svg'
-import Speakers from '../assets/speakers.svg'
+import GithubIcon from 'assets/github.svg'
+import LinkedinIcon from 'assets/linkedin.svg'
+import EnvelopeIcon from 'assets/envelope.svg'
+import Speakers from 'assets/speakers.svg'
+import { usePixelArt } from 'hooks/usePixelArt'
 
 export default function Header() {
+  const table = usePixelArt(64, 64)
+
   return (
     <div className={styles.main}>
       <div className={styles.leftContainer}>
@@ -27,7 +30,11 @@ export default function Header() {
       </div>
       <div className={styles.consoleContainer}>
         <div className={styles.console}>
-          <div className={styles.topContainer}></div>
+          <div className={styles.topContainer}>
+            <table className={styles.pixelArtTable}>
+              <tbody>{table}</tbody>
+            </table>
+          </div>
           <div className={styles.bottomContainer}>
             <div className={styles.fakeButtons}>
               <div>
