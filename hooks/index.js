@@ -1,1 +1,1 @@
-export { default as usePixelArt } from './usePixelArt'
+export { default as usePixelArt, ACTIONS } from './usePixelArt'
