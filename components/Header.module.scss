@@ -1,64 +1,46 @@
-@use '../styles/colors.module.scss' as colors;
-@use '../styles/mixins.module.scss' as mixins;
+@use '../styles/variables.scss' as variables;
+@use '../styles/mixins.scss' as mixins;
+@use '../styles/buttons.scss' as *;
 
 .main {
+  background-color: variables.$yellow;
   display: flex;
-  background-color: colors.$yellow;
   height: 100vh;
-  width: 100vw;
   padding: 5rem;
+  width: 100vw;
 
-  @media (max-width: 900px) {
+  @media (max-width: variables.$md) {
     display: grid;
+    gap: 5rem;
     grid-template-columns: 100%;
-    gap: 50px;
     height: auto;
     padding: 5rem 2rem;
   }
 }
 
 .leftContainer {
-  @include mixins.flex-center;
-  flex-direction: column;
-  height: 100%;
+  @include mixins.flex-center(column);
   flex-basis: 50%;
+  height: 100%;
 }
 
 .titleContainer {
   margin-bottom: 1rem;
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 .title {
-  font-size: 54px;
-  color: colors.$purple;
-  margin: 0;
+  @include mixins.text-shadow;
+  color: variables.$purple;
+  font-size: 3.5rem;
   margin-bottom: 1rem;
-  text-shadow: 3px 3px colors.$black;
 }
 
 .subtitle {
-  color: colors.$orange;
-  font-size: 42px;
-  margin: 0;
-  text-shadow: 3px 3px colors.$black;
-}
-
-.primaryButton {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 500;
-  border: 1px solid colors.$black;
-  background-color: colors.$pink;
-  box-shadow: 3px 3px colors.$black;
-  color: colors.$black;
-  padding: 15px;
-  border-radius: 15px;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 2px 2px colors.$black;
-  }
+  @include mixins.text-shadow;
+  color: variables.$orange;
+  font-size: 2.5rem;
 }
 
 .socialButtonsContainer {
@@ -67,66 +49,43 @@
   margin: 1.5rem 0;
 }
 
-.secondaryButton {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 500;
-  border: 2px solid colors.$black;
-  box-shadow: 2px 2px colors.$pink, 3px 3px colors.$black;
-  background-color: colors.$black;
-  color: colors.$white;
-  padding: 0.5rem;
-  border-radius: 15px;
-  cursor: pointer;
-
-  & > svg {
-    width: 1.5rem;
-    height: 1.5rem;
-    fill: colors.$white;
-  }
-
-  &:hover {
-    box-shadow: 1px 1px colors.$pink, 2px 2px colors.$black;
-  }
-}
-
 .consoleContainer {
+  @include mixins.flex-center(column);
   flex-basis: 50%;
-  @include mixins.flex-center;
-  flex-direction: column;
 }
 
 .console {
-  background: colors.$purple;
-  height: 700px;
-  width: 400px;
-  border: 2px solid colors.$black;
-  border-radius: 15px;
-  box-shadow: 8px 8px colors.$black;
+  background: variables.$purple;
+  border-radius: variables.$border-radius;
+  border: 2px solid variables.$black;
+  box-shadow: 0.5rem 0.5rem variables.$black;
   display: flex;
   flex-direction: column;
+  height: 700px;
+  width: 400px;
 
-  @media (max-width: 900px) {
+  @media (max-width: variables.$md) {
     height: 600px;
     width: 350px;
   }
 }
 
 .topContainer {
-  background-color: colors.$black;
   @include mixins.flex-center;
+  background-color: variables.$black;
+  border-radius: variables.$border-radius variables.$border-radius 0 0;
   height: 60%;
-  border-radius: 15px 15px 0 0;
   padding: 1rem;
 }
 
 .bottomContainer {
   @include mixins.flex-center;
   flex-direction: column;
-  justify-content: space-between;
   height: 40%;
+  justify-content: space-between;
   padding: 1.5rem 2.5rem;
 
-  @media (max-width: 900px) {
+  @media (max-width: variables.$md) {
     padding: 1rem;
   }
 }
@@ -136,73 +95,53 @@
 }
 
 .fakeButtons {
+  align-self: flex-start;
   display: flex;
   justify-content: space-between;
-  align-self: flex-start;
   width: 100%;
 
   div {
-    display: flex;
-    gap: 5px;
     align-items: center;
+    display: flex;
+    gap: 0.5rem;
   }
 }
 
 .fakeRoundedButton {
-  height: 15px;
-  width: 15px;
+  background-color: variables.$black;
   border-radius: 50%;
-  background-color: colors.$black;
+  height: variables.$border-radius;
+  width: variables.$border-radius;
 }
 
 .fakeLongButton {
-  height: 15px;
+  background-color: variables.$black;
+  border-radius: variables.$border-radius;
+  height: variables.$border-radius;
   width: 45px;
-  border-radius: 15px;
-  background-color: colors.$black;
 }
 
 .actionButtons {
+  align-items: center;
   display: flex;
   justify-content: space-between;
-  align-items: center;
   padding: 1.5rem;
   width: 100%;
 }
 
 .saveButton {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 500;
-  border: 1px solid colors.$black;
-  background-color: colors.$pink;
-  box-shadow: 3px 3px colors.$black;
-  color: colors.$black;
-  padding: 15px;
+  @extend .primaryButton;
   border-radius: 50%;
   height: 80px;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 2px 2px colors.$black;
-  }
 }
 
 .consoleActionButton {
-  font-family: 'Press Start 2P', cursive;
-  font-weight: 500;
-  border: 1px solid colors.$black;
-  background-color: colors.$orange;
-  box-shadow: 3px 3px colors.$black;
-  color: colors.$black;
+  @extend .primaryButton;
+  @include mixins.flex-center;
+  background-color: variables.$orange;
   border-radius: 50%;
   height: 30px;
   width: 30px;
-  cursor: pointer;
-  @include mixins.flex-center;
-
-  &:hover {
-    box-shadow: 2px 2px colors.$black;
-  }
 }
 
 .consoleButtonsContainer {
@@ -213,19 +152,19 @@
 }
 
 .pixelArtTable {
+  background-color: variables.$white;
   border-collapse: collapse;
-  margin: 0 auto;
+  border-radius: variables.$border-radius;
   cursor: pointer;
-  width: 100%;
   height: 100%;
-  background-color: colors.$white;
-  border-radius: 15px;
+  margin: 0 auto;
+  width: 100%;
 
   & > tbody > tr {
     & > td {
-      transition: background 0.15s;
-      border: 1px solid colors.$black;
+      border: 1px solid variables.$black;
       min-width: 0.5vmin;
+      transition: background 0.15s;
       width: 0.5vmin;
 
       &:hover {
@@ -236,12 +175,12 @@
 }
 
 .colorPicker {
-  opacity: 0;
+  cursor: pointer;
   height: 100%;
-  width: 100%;
+  left: 0;
+  opacity: 0;
   position: absolute;
   top: 0;
-  left: 0;
+  width: 100%;
   z-index: 1;
-  cursor: pointer;
 }

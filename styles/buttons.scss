@@ -1,0 +1,47 @@
+@use '../styles/variables.scss' as variables;
+
+.button {
+  border-radius: 15px;
+  border: 1px solid variables.$black;
+  box-shadow: 3px 3px variables.$black;
+  color: variables.$black;
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  font-weight: 500;
+
+  &:hover {
+    box-shadow: 2px 2px variables.$black;
+  }
+
+  & > svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.primaryButton {
+  @extend .button;
+  background-color: variables.$pink;
+  padding: 1rem;
+
+  & > svg {
+    fill: variables.$black;
+  }
+}
+
+.secondaryButton {
+  @extend .button;
+  background-color: variables.$black;
+  box-shadow: 2px 2px variables.$pink, 3px 3px variables.$black;
+  color: variables.$white;
+  cursor: pointer;
+  padding: 0.5rem;
+
+  &:hover {
+    box-shadow: 1px 1px variables.$pink, 2px 2px variables.$black;
+  }
+
+  & > svg {
+    fill: variables.$white;
+  }
+}
