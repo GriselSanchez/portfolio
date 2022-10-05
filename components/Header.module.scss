@@ -6,6 +6,13 @@
   width: 100vw;
   display: flex;
   padding: 5rem;
+
+  @media (max-width: 900px) {
+    display: inline;
+    height: auto;
+    gap: 50px;
+    padding: 2rem;
+  }
 }
 
 .leftContainer {
@@ -99,6 +106,11 @@
   box-shadow: 8px 8px colors.$black;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 900px) {
+    height: 600px;
+    width: 350px;
+  }
 }
 
 .topContainer {
@@ -120,6 +132,10 @@
   justify-content: space-between;
   height: 40%;
   padding: 1.5rem 2.5rem;
+
+  @media (max-width: 900px) {
+    padding: 1rem;
+  }
 }
 
 .speakers {
