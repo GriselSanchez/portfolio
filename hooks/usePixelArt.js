@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export const usePixelArt = (height, width, selectedColor) => {
+export default function usePixelArt(height, width, selectedColor) {
   const [isClicked, setIsClicked] = useState(false)
   const [points, setPoints] = useState([])
 

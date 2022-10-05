@@ -1,11 +1,9 @@
 import { useState } from 'react'
 
+import { GithubIcon, LinkedinIcon, EnvelopeIcon, Speakers } from '@assets/index'
+import { usePixelArt } from '@hooks/index'
+
 import styles from './Header.module.scss'
-import GithubIcon from 'assets/github.svg'
-import LinkedinIcon from 'assets/linkedin.svg'
-import EnvelopeIcon from 'assets/envelope.svg'
-import Speakers from 'assets/speakers.svg'
-import { usePixelArt } from 'hooks/usePixelArt'
 
 export default function Header() {
   const [selectedColor, setSelectedColor] = useState('black')
