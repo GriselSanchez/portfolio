@@ -12,7 +12,7 @@ export default function ConsoleContainer() {
   const [action, setAction] = useState(ACTIONS.DRAW)
 
   const canvasRef = useRef()
-  const downloadPixelArt = useDownloadImage(canvasRef.current, 'Pixel-Art')
+  const { downloadPixelArt, loading } = useDownloadImage(canvasRef.current, 'Pixel-Art')
 
   const { table, reset, DEFAULT_COLORS } = usePixelArt(
     { height: 32, width: 32 },
@@ -41,7 +41,11 @@ export default function ConsoleContainer() {
           </div>
           <div className={styles.actionButtons}>
             <div>
-              <button className={styles.saveButton} onClick={() => downloadPixelArt()}>
+              <button
+                className={styles.saveButton}
+                onClick={() => downloadPixelArt()}
+                disabled={loading}
+              >
                 Save
               </button>
             </div>

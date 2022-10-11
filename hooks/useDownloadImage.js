@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import html2canvas from 'html2canvas'
 
 export default function useDownloadImage(element, imageFileName) {
+  const [loading, setLoading] = useState(false)
+
   const downloadImage = (blob, fileName) => {
     const fakeLink = window.document.createElement('a')
     fakeLink.style = 'display:none;'
@@ -15,12 +18,28 @@ export default function useDownloadImage(element, imageFileName) {
     fakeLink.remove()
   }
 
-  const downloadPixelArt = () => {
-    html2canvas(element, { scale: 1 }).then(canvas => {
-      const image = canvas.toDataURL('image/png', 10.0)
-      downloadImage(image, imageFileName)
-    })
+  const startDownload = element => {
+    setLoading(true)
+    element.classList.add('no-borders')
   }
 
-  return downloadPixelArt
+  const finishDownload = element => {
+    setLoading(false)
+    element.classList.remove('no-borders')
+  }
+
+  const downloadPixelArt = () => {
+    startDownload(element)
+    html2canvas(element, { scale: 10 })
+      .then(canvas => {
+        const image = canvas.toDataURL('image/png', 10.0)
+        downloadImage(image, imageFileName)
+        finishDownload(element)
+      })
+      .catch(() => {
+        finishDownload(element)
+      })
+  }
+
+  return { downloadPixelArt, loading }
 }

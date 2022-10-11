@@ -30,3 +30,8 @@ p {
   height: 100vh;
   justify-content: center;
 }
+
+/* Required to print pixel art without borders */
+.no-borders > tbody > tr > td {
+  border: none !important;
+}
