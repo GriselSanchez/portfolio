@@ -25,7 +25,7 @@ export default function ConsoleContainer() {
       <div className={styles.console}>
         <div className={styles.topContainer}>
           <table ref={canvasRef} className={styles.pixelArtTable}>
-            <tbody>{table}</tbody>
+            {table}
           </table>
         </div>
         <div className={styles.bottomContainer}>

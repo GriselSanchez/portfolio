@@ -108,5 +108,9 @@ export default function usePixelArt(
     table.push(<tr key={i}>{columns}</tr>)
   }
 
-  return { table, reset, DEFAULT_COLORS }
+  return {
+    table: <tbody onMouseLeave={onMouseUp}>{table}</tbody>,
+    reset,
+    DEFAULT_COLORS,
+  }
 }
