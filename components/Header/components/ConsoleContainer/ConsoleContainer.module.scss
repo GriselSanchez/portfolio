@@ -91,6 +91,8 @@
 .consoleActionButton {
   @extend .primaryButton;
   @include mixins.flex-center;
+  display: grid;
+  align-content: center;
   background-color: variables.$orange;
   border-radius: 50%;
   height: 30px;
@@ -126,7 +128,7 @@
 .pixelArtTable {
   background-color: variables.$white;
   border-collapse: collapse;
-  border-radius: variables.$border-radius;
+  // border-radius: variables.$border-radius;
   cursor: pointer;
   height: 100%;
   margin: 0 auto;
@@ -134,7 +136,7 @@
 
   & > tbody > tr {
     & > td {
-      border: 1px solid variables.$black;
+      border: 1px solid #0000001c;
       min-width: 0.5vmin;
       transition: background 0.15s;
       width: 0.5vmin;

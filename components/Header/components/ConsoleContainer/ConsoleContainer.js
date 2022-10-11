@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { Speakers } from 'assets'
+import { BucketIcon, EraserIcon, PaintIcon, ResetIcon, Speakers } from 'assets'
 import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
 
 import styles from './ConsoleContainer.module.scss'
@@ -47,7 +47,9 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.DRAW)}
                 style={{ gridColumn: 2, gridRow: 1, position: 'relative' }}
               >
-                <button className={styles.consoleActionButton}>X</button>
+                <button className={styles.consoleActionButton}>
+                  <PaintIcon />
+                </button>
                 <input
                   type="color"
                   className={styles.colorPicker}
@@ -55,28 +57,38 @@ export default function ConsoleContainer() {
                   onBlur={e => setSelectedColor(e.target.value)}
                 />
               </div>
-              <div onClick={() => setAction(ACTIONS.ERASE)} style={{ gridColumn: 3, gridRow: 2 }}>
+              <div
+                onClick={() => setAction(ACTIONS.FILL)}
+                style={{ gridColumn: 3, gridRow: 2, position: 'relative' }}
+              >
+                <button className={styles.consoleActionButton}>
+                  <BucketIcon />
+                </button>
+                <input
+                  type="color"
+                  className={styles.colorPicker}
+                  onChange={e => setSelectedColor(e.target.value)}
+                  onBlur={e => setSelectedColor(e.target.value)}
+                />
+              </div>
+              <div onClick={() => setAction(ACTIONS.ERASE)} style={{ gridColumn: 2, gridRow: 3 }}>
                 <button
                   className={styles.consoleActionButton}
                   onClick={() => setSelectedColor(DEFAULT_COLORS.erased)}
                 >
-                  Y
+                  <EraserIcon />
                 </button>
               </div>
               <div
-                onClick={() => setAction(ACTIONS.FILL)}
-                style={{ gridColumn: 2, gridRow: 3, position: 'relative' }}
+                onClick={() => {
+                  reset()
+                  setAction(ACTIONS.DRAW)
+                }}
+                style={{ gridColumn: 1, gridRow: 2 }}
               >
-                <button className={styles.consoleActionButton}>W</button>
-                <input
-                  type="color"
-                  className={styles.colorPicker}
-                  onChange={e => setSelectedColor(e.target.value)}
-                  onBlur={e => setSelectedColor(e.target.value)}
-                />
-              </div>
-              <div onClick={() => reset()} style={{ gridColumn: 1, gridRow: 2 }}>
-                <button className={styles.consoleActionButton}>Z</button>
+                <button className={styles.consoleActionButton}>
+                  <ResetIcon />
+                </button>
               </div>
             </div>
           </div>

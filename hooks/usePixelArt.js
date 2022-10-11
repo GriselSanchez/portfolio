@@ -20,18 +20,18 @@ export default function usePixelArt(
   const [isClicked, setIsClicked] = useState(false)
 
   const table = []
-  const points = useMemo(() => ArrayUtils.new2dArray(width, height, false), [])
   const colors = useMemo(() => ArrayUtils.new2dArray(width, height, DEFAULT_COLORS.erased), [])
 
-  const drawNear = (x, y) => {
+  const drawNear = (x, y, color) => {
     if (x >= width || y >= height || x < 0 || y < 0) return
-    if (points[x][y]) return
+    if (colors[x][y] !== color) return
+    if (colors[x][y] === selectedColor) return
 
     draw({ x, y })
-    drawNear(x + 1, y)
-    drawNear(x - 1, y)
-    drawNear(x, y + 1)
-    drawNear(x, y - 1)
+    drawNear(x + 1, y, color)
+    drawNear(x - 1, y, color)
+    drawNear(x, y + 1, color)
+    drawNear(x, y - 1, color)
   }
 
   const changeBackgroundColor = (event, color) => {
@@ -40,25 +40,22 @@ export default function usePixelArt(
 
   const draw = ({ x, y }, event) => {
     changeBackgroundColor(event, selectedColor)
-    points[x][y] = true
     colors[x][y] = selectedColor
   }
 
   const fill = ({ x, y }, event) => {
     changeBackgroundColor(event, selectedColor)
-    drawNear(x, y)
+    drawNear(x, y, colors[x][y])
   }
 
   const erase = ({ x, y }, event) => {
     changeBackgroundColor(event, DEFAULT_COLORS.erased)
-    points[x][y] = false
     colors[x][y] = DEFAULT_COLORS.erased
   }
 
   const reset = () => {
     for (let i = 0; i < height; i++) {
       for (let j = 0; j < width; j++) {
-        points[i][j] = false
         colors[i][j] = DEFAULT_COLORS.erased
       }
     }
