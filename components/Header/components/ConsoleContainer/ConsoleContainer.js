@@ -1,8 +1,11 @@
 import { useRef, useState } from 'react'
 import { BucketIcon, EraserIcon, PaintIcon, ResetIcon, Speakers } from 'assets'
 import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
+import classNames from 'classnames/bind'
 
 import styles from './ConsoleContainer.module.scss'
+
+const cx = classNames.bind(styles)
 
 export default function ConsoleContainer() {
   const [selectedColor, setSelectedColor] = useState()
@@ -47,7 +50,12 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.DRAW)}
                 style={{ gridColumn: 2, gridRow: 1, position: 'relative' }}
               >
-                <button className={styles.consoleActionButton}>
+                <button
+                  className={cx({
+                    consoleActionButton: true,
+                    consoleActionSelected: action === ACTIONS.DRAW,
+                  })}
+                >
                   <PaintIcon />
                 </button>
                 <input
@@ -61,7 +69,12 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.FILL)}
                 style={{ gridColumn: 3, gridRow: 2, position: 'relative' }}
               >
-                <button className={styles.consoleActionButton}>
+                <button
+                  className={cx({
+                    consoleActionButton: true,
+                    consoleActionSelected: action === ACTIONS.FILL,
+                  })}
+                >
                   <BucketIcon />
                 </button>
                 <input
@@ -73,7 +86,10 @@ export default function ConsoleContainer() {
               </div>
               <div onClick={() => setAction(ACTIONS.ERASE)} style={{ gridColumn: 2, gridRow: 3 }}>
                 <button
-                  className={styles.consoleActionButton}
+                  className={cx({
+                    consoleActionButton: true,
+                    consoleActionSelected: action === ACTIONS.ERASE,
+                  })}
                   onClick={() => setSelectedColor(DEFAULT_COLORS.erased)}
                 >
                   <EraserIcon />
@@ -86,7 +102,11 @@ export default function ConsoleContainer() {
                 }}
                 style={{ gridColumn: 1, gridRow: 2 }}
               >
-                <button className={styles.consoleActionButton}>
+                <button
+                  className={cx({
+                    consoleActionButton: true,
+                  })}
+                >
                   <ResetIcon />
                 </button>
               </div>

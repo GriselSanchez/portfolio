@@ -99,6 +99,10 @@
   width: 30px;
 }
 
+.consoleActionSelected {
+  background-color: variables.$pink !important;
+}
+
 .consoleButtonsContainer {
   display: grid;
   grid-gap: 0;
@@ -128,17 +132,16 @@
 .pixelArtTable {
   background-color: variables.$white;
   border-collapse: collapse;
-  // border-radius: variables.$border-radius;
   cursor: pointer;
   height: 100%;
   margin: 0 auto;
   width: 100%;
+  border: 2px solid variables.$black;
 
   & > tbody > tr {
     & > td {
       border: 1px solid #0000001c;
       min-width: 0.5vmin;
-      transition: background 0.15s;
       width: 0.5vmin;
 
       &:hover {
