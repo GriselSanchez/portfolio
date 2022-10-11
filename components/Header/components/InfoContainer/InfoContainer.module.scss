@@ -9,7 +9,6 @@
 }
 
 .titleContainer {
-  margin-bottom: 1rem;
   text-align: center;
   width: 80%;
 
@@ -18,7 +17,7 @@
 
     & > span {
       font-weight: 600;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       text-shadow: 1px 1px variables.$black;
     }
   }

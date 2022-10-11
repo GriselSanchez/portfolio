@@ -14,8 +14,8 @@ export default function InfoContainer() {
           digital experiences.
         </p>
         <p>
-          <b>I'm passionate about: </b>User interaction, animation, design, problem-solving, and
-          mastering the latest frontend technologies.
+          I'm passionate about user interaction, animation, design, problem-solving, and mastering
+          the latest frontend technologies.
         </p>
       </div>
       <div className={styles.socialButtonsContainer}>
