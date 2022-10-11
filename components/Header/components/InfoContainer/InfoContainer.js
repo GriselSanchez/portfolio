@@ -8,6 +8,15 @@ export default function InfoContainer() {
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>Hi, I'm Grisel.</h1>
         <h2 className={styles.subtitle}>A Frontend Engineer.</h2>
+        <p>
+          I have four years of experience developing <span id={styles.purple}>performant</span>,{' '}
+          <span id={styles.orange}>responsive</span>, and <span id={styles.pink}>maintainable</span>{' '}
+          digital experiences.
+        </p>
+        <p>
+          <b>I'm passionate about: </b>User interaction, animation, design, problem-solving, and
+          mastering the latest frontend technologies.
+        </p>
       </div>
       <div className={styles.socialButtonsContainer}>
         <a

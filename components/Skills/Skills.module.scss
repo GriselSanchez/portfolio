@@ -1,0 +1,17 @@
+@use 'styles/variables.scss' as variables;
+
+.main {
+  background-color: variables.$yellow;
+  display: flex;
+  height: 100vh;
+  padding: 5rem;
+  width: 100vw;
+
+  @media (max-width: variables.$md) {
+    display: grid;
+    gap: 5rem;
+    grid-template-columns: 100%;
+    height: auto;
+    padding: 5rem 2rem;
+  }
+}
