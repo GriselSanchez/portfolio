@@ -88,45 +88,11 @@
   height: 80px;
 }
 
-.consoleActionButton {
-  @extend .primaryButton;
-  @include mixins.flex-center;
-  display: grid;
-  align-content: center;
-  background-color: variables.$orange;
-  border-radius: 50%;
-  height: 30px;
-  width: 30px;
-}
-
-.consoleActionSelected {
-  background-color: variables.$pink !important;
-}
-
 .consoleButtonsContainer {
   display: grid;
   grid-gap: 0;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-
-  // & > div:nth-of-type(1) {
-  //   grid-column: 2;
-  //   grid-row: 1;
-  //   position: relative;
-  // }
-
-  // @for $i from 2 through 4 {
-  //   div:nth-of-type(#{$i}) {
-  //     grid-column: 4 - $i;
-  //     @if ($i % 2 == 0) {
-  //       grid-row: 3;
-  //       position: relative;
-  //     } @else {
-  //       grid-row: 2;
-  //       position: relative;
-  //     }
-  //   }
-  // }
 }
 
 .pixelArtTable {
@@ -149,15 +115,4 @@
       }
     }
   }
-}
-
-.colorPicker {
-  cursor: pointer;
-  height: 100%;
-  left: 0;
-  opacity: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
 }

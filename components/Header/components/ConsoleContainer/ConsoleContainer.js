@@ -1,11 +1,9 @@
 import { useRef, useState } from 'react'
 import { BucketIcon, EraserIcon, PaintIcon, ResetIcon, Speakers } from 'assets'
 import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
-import classNames from 'classnames/bind'
 
 import styles from './ConsoleContainer.module.scss'
-
-const cx = classNames.bind(styles)
+import ConsoleButton from './components/ConsoleButton/ConsoleButton'
 
 export default function ConsoleContainer() {
   const [selectedColor, setSelectedColor] = useState()
@@ -13,12 +11,7 @@ export default function ConsoleContainer() {
 
   const canvasRef = useRef()
   const { downloadPixelArt, loading } = useDownloadImage(canvasRef.current, 'Pixel-Art')
-
-  const { table, reset, DEFAULT_COLORS } = usePixelArt(
-    { height: 32, width: 32 },
-    selectedColor,
-    action,
-  )
+  const { table, reset } = usePixelArt({ height: 32, width: 32 }, selectedColor, action)
 
   return (
     <div className={styles.consoleContainer}>
@@ -50,70 +43,40 @@ export default function ConsoleContainer() {
               </button>
             </div>
             <div className={styles.consoleButtonsContainer}>
-              <div
-                onClick={() => setAction(ACTIONS.DRAW)}
+              <ConsoleButton
+                selectedAction={action}
+                action={ACTIONS.DRAW}
                 style={{ gridColumn: 2, gridRow: 1, position: 'relative' }}
-              >
-                <button
-                  className={cx({
-                    consoleActionButton: true,
-                    consoleActionSelected: action === ACTIONS.DRAW,
-                  })}
-                >
-                  <PaintIcon />
-                </button>
-                <input
-                  type="color"
-                  className={styles.colorPicker}
-                  onChange={e => setSelectedColor(e.target.value)}
-                  onBlur={e => setSelectedColor(e.target.value)}
-                />
-              </div>
-              <div
-                onClick={() => setAction(ACTIONS.FILL)}
+                icon={<PaintIcon />}
+                hasColorPicker
+                setSelectedColor={setSelectedColor}
+                onClick={() => setAction(ACTIONS.DRAW)}
+              />
+              <ConsoleButton
+                selectedAction={action}
+                action={ACTIONS.FILL}
                 style={{ gridColumn: 3, gridRow: 2, position: 'relative' }}
-              >
-                <button
-                  className={cx({
-                    consoleActionButton: true,
-                    consoleActionSelected: action === ACTIONS.FILL,
-                  })}
-                >
-                  <BucketIcon />
-                </button>
-                <input
-                  type="color"
-                  className={styles.colorPicker}
-                  onChange={e => setSelectedColor(e.target.value)}
-                  onBlur={e => setSelectedColor(e.target.value)}
-                />
-              </div>
-              <div onClick={() => setAction(ACTIONS.ERASE)} style={{ gridColumn: 2, gridRow: 3 }}>
-                <button
-                  className={cx({
-                    consoleActionButton: true,
-                    consoleActionSelected: action === ACTIONS.ERASE,
-                  })}
-                  onClick={() => setSelectedColor(DEFAULT_COLORS.erased)}
-                >
-                  <EraserIcon />
-                </button>
-              </div>
-              <div
+                icon={<BucketIcon />}
+                hasColorPicker
+                setSelectedColor={setSelectedColor}
+                onClick={() => setAction(ACTIONS.FILL)}
+              />
+              <ConsoleButton
+                selectedAction={action}
+                action={ACTIONS.ERASE}
+                style={{ gridColumn: 2, gridRow: 3 }}
+                icon={<EraserIcon />}
+                onClick={() => setAction(ACTIONS.ERASE)}
+              />
+              <ConsoleButton
+                selectedAction={action}
+                style={{ gridColumn: 1, gridRow: 2 }}
+                icon={<ResetIcon />}
                 onClick={() => {
                   reset()
                   setAction(ACTIONS.DRAW)
                 }}
-                style={{ gridColumn: 1, gridRow: 2 }}
-              >
-                <button
-                  className={cx({
-                    consoleActionButton: true,
-                  })}
-                >
-                  <ResetIcon />
-                </button>
-              </div>
+              />
             </div>
           </div>
           <Speakers className={styles.speakers} />

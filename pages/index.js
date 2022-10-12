@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import Header from 'components/Header/Header'
-import Skills from 'components/Skills/Skills'
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
 
       <main>
         <Header />
-        {/* <Skills /> */}
       </main>
     </div>
   )

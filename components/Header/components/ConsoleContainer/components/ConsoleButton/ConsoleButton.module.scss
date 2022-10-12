@@ -1,0 +1,29 @@
+@use 'styles/variables.scss' as variables;
+@use 'styles/mixins.scss' as mixins;
+@use 'styles/buttons.scss' as *;
+
+.consoleActionButton {
+  @extend .primaryButton;
+  @include mixins.flex-center;
+  display: grid;
+  align-content: center;
+  background-color: variables.$orange;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+}
+
+.consoleActionSelected {
+  background-color: variables.$pink !important;
+}
+
+.colorPicker {
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}

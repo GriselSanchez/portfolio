@@ -24,8 +24,7 @@ export default function usePixelArt(
 
   const drawNear = (x, y, color) => {
     if (x >= width || y >= height || x < 0 || y < 0) return
-    if (colors[x][y] !== color) return
-    if (colors[x][y] === selectedColor) return
+    if (colors[x][y] !== color || colors[x][y] === selectedColor) return
 
     draw({ x, y })
     drawNear(x + 1, y, color)
@@ -61,8 +60,7 @@ export default function usePixelArt(
     }
   }
 
-  const onMouseDown = (point, event) => {
-    setIsClicked(true)
+  const actionSwitch = (point, event) => {
     switch (action) {
       case ACTIONS.DRAW:
         draw(point, event)
@@ -78,8 +76,15 @@ export default function usePixelArt(
     }
   }
 
+  const onMouseDown = (point, event) => {
+    setIsClicked(true)
+    actionSwitch(point, event)
+  }
+
   const onMouseOver = (point, event) => {
-    if (isClicked) draw(point, event)
+    if (isClicked) {
+      actionSwitch(point, event)
+    }
   }
 
   const onMouseUp = () => {
@@ -111,6 +116,5 @@ export default function usePixelArt(
   return {
     table: <tbody onMouseLeave={onMouseUp}>{table}</tbody>,
     reset,
-    DEFAULT_COLORS,
   }
 }
