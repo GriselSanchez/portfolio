@@ -18,8 +18,6 @@ export default function usePixelArt(
   action = ACTIONS.DRAW,
 ) {
   const [isClicked, setIsClicked] = useState(false)
-
-  const table = []
   const colors = useMemo(() => ArrayUtils.new2dArray(width, height, DEFAULT_COLORS.erased), [])
 
   const drawNear = (x, y, color) => {
@@ -91,30 +89,26 @@ export default function usePixelArt(
     setIsClicked(false)
   }
 
-  for (let i = 0; i < height; i++) {
-    const columns = []
-
-    for (let j = 0; j < width; j++) {
-      const point = { x: j, y: i }
-
-      columns.push(
-        <td
-          key={j}
-          onMouseDown={event => onMouseDown(point, event)}
-          onMouseOver={event => onMouseOver(point, event)}
-          onMouseUp={onMouseUp}
-          style={{
-            backgroundColor: colors[j][i],
-          }}
-        />,
-      )
-    }
-
-    table.push(<tr key={i}>{columns}</tr>)
-  }
-
   return {
-    table: <tbody onMouseLeave={onMouseUp}>{table}</tbody>,
+    table: (
+      <tbody onMouseLeave={onMouseUp}>
+        {colors.map((column, i) => (
+          <tr key={i}>
+            {column.map((backgroundColor, j) => (
+              <td
+                key={j}
+                onMouseDown={event => onMouseDown({ x: i, y: j }, event)}
+                onMouseOver={event => onMouseOver({ x: i, y: j }, event)}
+                onMouseUp={onMouseUp}
+                style={{
+                  backgroundColor,
+                }}
+              />
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    ),
     reset,
   }
 }
