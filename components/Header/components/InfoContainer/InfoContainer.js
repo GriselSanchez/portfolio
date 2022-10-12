@@ -20,6 +20,7 @@ export default function InfoContainer() {
       </div>
       <div className={styles.socialButtonsContainer}>
         <a
+          aria-label="github"
           className={styles.secondaryButton}
           href="https://github.com/griselsanchez"
           target="_blank"
@@ -27,13 +28,18 @@ export default function InfoContainer() {
           <GithubIcon />
         </a>
         <a
+          aria-label="linkedin"
           className={styles.secondaryButton}
           href="https://linkedin.com/in/griselsanchez"
           target="_blank"
         >
           <LinkedinIcon />
         </a>
-        <a className={styles.secondaryButton} href="mailto: griselalmasanchez@gmail.com">
+        <a
+          aria-label="email"
+          className={styles.secondaryButton}
+          href="mailto: griselalmasanchez@gmail.com"
+        >
           <EnvelopeIcon />
         </a>
       </div>

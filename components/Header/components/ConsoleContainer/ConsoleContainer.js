@@ -44,6 +44,7 @@ export default function ConsoleContainer() {
             </div>
             <div className={styles.consoleButtonsContainer}>
               <ConsoleButton
+                label="draw"
                 selectedAction={action}
                 action={ACTIONS.DRAW}
                 style={{ gridColumn: 2, gridRow: 1, position: 'relative' }}
@@ -53,6 +54,7 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.DRAW)}
               />
               <ConsoleButton
+                label="fill"
                 selectedAction={action}
                 action={ACTIONS.FILL}
                 style={{ gridColumn: 3, gridRow: 2, position: 'relative' }}
@@ -62,6 +64,7 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.FILL)}
               />
               <ConsoleButton
+                label="erase"
                 selectedAction={action}
                 action={ACTIONS.ERASE}
                 style={{ gridColumn: 2, gridRow: 3 }}
@@ -69,6 +72,7 @@ export default function ConsoleContainer() {
                 onClick={() => setAction(ACTIONS.ERASE)}
               />
               <ConsoleButton
+                label="reset"
                 selectedAction={action}
                 style={{ gridColumn: 1, gridRow: 2 }}
                 icon={<ResetIcon />}

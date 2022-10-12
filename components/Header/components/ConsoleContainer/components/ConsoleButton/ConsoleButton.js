@@ -12,10 +12,12 @@ export default function ConsoleButton({
   hasColorPicker,
   setSelectedColor,
   onClick,
+  label,
 }) {
   return (
     <div onClick={onClick} style={style}>
       <button
+        aria-label={label}
         className={cx({
           consoleActionButton: true,
           consoleActionSelected: selectedAction === action,
@@ -25,6 +27,7 @@ export default function ConsoleButton({
       </button>
       {hasColorPicker && (
         <input
+          aria-label={`color-picker-${label}`}
           type="color"
           className={styles.colorPicker}
           onChange={e => setSelectedColor(e.target.value)}
