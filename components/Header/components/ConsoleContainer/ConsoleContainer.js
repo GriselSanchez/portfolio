@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { BucketIcon, EraserIcon, PaintIcon, ResetIcon, Speakers } from 'assets'
 import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
 
@@ -12,6 +12,15 @@ export default function ConsoleContainer() {
   const canvasRef = useRef()
   const { downloadPixelArt, loading } = useDownloadImage(canvasRef.current, 'Pixel-Art')
   const { table, reset } = usePixelArt({ height: 32, width: 32 }, selectedColor, action)
+
+  // Mobile support
+  useEffect(() => {
+    if (canvasRef.current) {
+      const preventScrollWhenDrawing = e => e.preventDefault()
+      canvasRef.current.addEventListener('touchmove', preventScrollWhenDrawing, { passive: false })
+    }
+    return () => canvasRef.current.removeEventListener('touchmove', preventScrollWhenDrawing)
+  }, [])
 
   return (
     <div className={styles.consoleContainer}>
