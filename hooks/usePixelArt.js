@@ -98,7 +98,7 @@ export default function usePixelArt(
 
   return {
     table: (
-      <tbody onMouseLeave={onMouseUp} style={{ touchAction: 'none' }}>
+      <tbody onMouseLeave={onMouseUp}>
         {colors.map((column, i) => (
           <tr key={i}>
             {column.map((backgroundColor, j) => (

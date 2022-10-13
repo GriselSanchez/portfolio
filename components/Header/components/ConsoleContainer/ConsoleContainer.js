@@ -15,11 +15,14 @@ export default function ConsoleContainer() {
 
   // Mobile support
   useEffect(() => {
-    if (canvasRef.current) {
-      const preventScrollWhenDrawing = e => e.preventDefault()
-      canvasRef.current.addEventListener('touchmove', preventScrollWhenDrawing, { passive: false })
+    const element = canvasRef.current
+    const preventScrollWhenDrawing = e => e.preventDefault()
+
+    if (element) {
+      element.addEventListener('touchmove', preventScrollWhenDrawing, { passive: false })
     }
-    return () => canvasRef.current.removeEventListener('touchmove', preventScrollWhenDrawing)
+
+    return () => element.removeEventListener('touchmove', preventScrollWhenDrawing)
   }, [])
 
   return (
