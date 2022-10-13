@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrayUtils } from 'utils'
 
 export const ACTIONS = {
@@ -18,13 +18,17 @@ export default function usePixelArt(
   action = ACTIONS.DRAW,
 ) {
   const [isClicked, setIsClicked] = useState(false)
-  const colors = useMemo(() => ArrayUtils.new2dArray(width, height, DEFAULT_COLORS.erased), [])
+  const [colors, setColors] = useState([])
 
-  const drawNear = (x, y, color) => {
+  useEffect(() => {
+    reset()
+  }, [])
+
+  const drawNear = async (x, y, color) => {
     if (x >= width || y >= height || x < 0 || y < 0) return
     if (colors[x][y] !== color || colors[x][y] === selectedColor) return
 
-    draw({ x, y })
+    await draw({ x, y })
     drawNear(x + 1, y, color)
     drawNear(x - 1, y, color)
     drawNear(x, y + 1, color)
@@ -35,9 +39,12 @@ export default function usePixelArt(
     if (event) event.currentTarget.style.backgroundColor = color
   }
 
-  const draw = ({ x, y }, event) => {
+  const draw = async ({ x, y }, event) => {
     changeBackgroundColor(event, selectedColor)
-    colors[x][y] = selectedColor
+    await setColors(prev => {
+      prev[x][y] = selectedColor
+      return prev
+    })
   }
 
   const fill = ({ x, y }, event) => {
@@ -47,15 +54,14 @@ export default function usePixelArt(
 
   const erase = ({ x, y }, event) => {
     changeBackgroundColor(event, DEFAULT_COLORS.erased)
-    colors[x][y] = DEFAULT_COLORS.erased
+    setColors(prev => {
+      prev[x][y] = DEFAULT_COLORS.erased
+      return prev
+    })
   }
 
   const reset = () => {
-    for (let i = 0; i < height; i++) {
-      for (let j = 0; j < width; j++) {
-        colors[i][j] = DEFAULT_COLORS.erased
-      }
-    }
+    setColors(ArrayUtils.new2dArray(width, height, DEFAULT_COLORS.erased))
   }
 
   const actionSwitch = (point, event) => {
@@ -81,7 +87,8 @@ export default function usePixelArt(
 
   const onMouseOver = (point, event) => {
     if (isClicked) {
-      actionSwitch(point, event)
+      if (action === ACTIONS.FILL) return
+      return actionSwitch(point, event)
     }
   }
 
