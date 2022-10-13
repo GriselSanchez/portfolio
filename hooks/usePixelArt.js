@@ -105,8 +105,11 @@ export default function usePixelArt(
               <td
                 key={j}
                 onMouseDown={event => onMouseDown({ x: i, y: j }, event)}
+                onTouchStart={event => onMouseDown({ x: i, y: j }, event)}
                 onMouseOver={event => onMouseOver({ x: i, y: j }, event)}
+                onTouchMove={event => onMouseOver({ x: i, y: j }, event)}
                 onMouseUp={onMouseUp}
+                onTouchEnd={onMouseUp}
                 style={{
                   backgroundColor,
                 }}
