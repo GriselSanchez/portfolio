@@ -1,6 +1,6 @@
 # My Porfolio
 
-[Link to Porfolio](grisel.me)
+[Link to Porfolio](https://grisel.me)
 
 ![Portfolio Preview GIF](https://github.com/GriselSanchez/readme-files/blob/main/portfolio.gif)
 
