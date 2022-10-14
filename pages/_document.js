@@ -2,13 +2,13 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html>
+    <Html lang="en">
       <Head>
         <title>Grisel</title>
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="Grisel's Portfolio" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500;600&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@500;700&display=swap"
           rel="stylesheet"
         />
         <link
