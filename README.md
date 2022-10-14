@@ -12,4 +12,4 @@
 ## Tools
 
 - Next.js
-- Sass
+- SCSS
