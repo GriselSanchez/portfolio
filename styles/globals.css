@@ -1,11 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 html,
 body {
-  font-family: 'Source Code Pro', monospace;
   margin: 0;
   padding: 0;
+}
+
+h1,
+h2,
+h3,
+p {
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 500;
+  margin: 0;
 }
 
 * {
@@ -14,13 +19,6 @@ body {
 
 main {
   height: 100%;
-}
-
-h1,
-h2,
-h3,
-p {
-  margin: 0;
 }
 
 .container {
