@@ -7,15 +7,14 @@ export default function InfoContainer() {
     <div className={styles.leftContainer}>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>Hi, I'm Grisel.</h1>
-        <h2 className={styles.subtitle}>A Frontend Engineer.</h2>
+        <h2 className={styles.subtitle}>A Software Engineer.</h2>
         <p>
           I have 5 years of experience developing <span id={styles.purple}>performant</span>,{' '}
           <span id={styles.orange}>responsive</span>, and <span id={styles.pink}>maintainable</span>{' '}
           digital experiences.
         </p>
         <p>
-          I'm passionate about user experience, design, creative problem-solving, and mastering
-          the latest technologies.
+          I'm passionate about user experience, design, creative problem-solving, and mastering the latest technologies.
         </p>
       </div>
       <div className={styles.socialButtonsContainer}>
@@ -35,7 +34,7 @@ export default function InfoContainer() {
           <EnvelopeIcon />
         </a>
       </div>
-      <a className={styles.primaryButton} href="Grisel-Sanchez-CV.pdf" target="_blank">
+      <a className={styles.primaryButton} href="Grisel-Sanchez-Resume.pdf" target="_blank">
         Resume
       </a>
     </div>
