@@ -11,15 +11,23 @@
 .titleContainer {
   text-align: center;
   width: 100%;
+}
 
-  & > p {
-    margin-bottom: 0.5rem;
+.description {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 0.5rem;
 
-    & > span {
-      font-weight: 600;
-      font-size: 1.2rem;
-      text-shadow: 1px 1px variables.$black;
-    }
+  #purple, #orange, #pink {
+    font-weight: 600;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px variables.$black;
+    margin-right: -.5rem
   }
 
   #purple {
@@ -33,6 +41,7 @@
   #pink {
     color: variables.$pink;
   }
+
 }
 
 .title {
@@ -53,4 +62,27 @@
   @include mixins.flex-center;
   gap: 1rem;
   margin: 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+    text-shadow: 0.15rem 0.15rem black;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    text-shadow: 0.1rem 0.1rem black;
+  }
+
+  .description {
+    font-size: .9rem;
+
+    #purple,
+    #orange,
+    #pink {
+      font-size: .9rem;
+    }
+  }
 }

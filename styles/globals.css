@@ -4,6 +4,10 @@ body {
   padding: 0;
 }
 
+span {
+  font-family: 'Source Code Pro', monospace;
+}
+
 p {
   font-family: 'Source Code Pro', monospace;
   font-weight: 500;

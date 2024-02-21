@@ -1,4 +1,5 @@
-import { LinkedinIcon, EnvelopeIcon } from 'assets'
+import { GithubIcon, LinkedinIcon, EnvelopeIcon } from 'assets'
+import AnimatedText from '../AnimatedText/AnimatedText'
 
 import styles from './InfoContainer.module.scss'
 
@@ -6,16 +7,21 @@ export default function InfoContainer() {
   return (
     <div className={styles.leftContainer}>
       <div className={styles.titleContainer}>
-        <h1 className={styles.title}>Hi, I'm Grisel.</h1>
-        <h2 className={styles.subtitle}>A Software Engineer.</h2>
-        <p>
-          I have 5 years of experience developing <span id={styles.purple}>performant</span>,{' '}
-          <span id={styles.orange}>responsive</span>, and <span id={styles.pink}>maintainable</span>{' '}
-          digital experiences.
-        </p>
-        <p>
-          I'm passionate about user experience, design, creative problem-solving, and mastering the latest technologies.
-        </p>
+        <AnimatedText text="Hi, I'm Grisel." variant="h1" className={styles.title} />
+        <AnimatedText text="A Software Engineer." variant="h2" className={styles.subtitle} />
+        <div className={styles.description}>
+          <span>I have 5 years of experience developing</span>{' '}
+          <AnimatedText text="performant" variant="p" id={styles.purple} />
+          <span>,</span>
+          <AnimatedText text="responsive" variant="p" id={styles.orange} />
+          <span>, and </span>
+          <AnimatedText text="maintainable" variant="p" id={styles.pink} />{' '}
+          <span>digital experiences.</span>
+          <p>
+            I'm passionate about user experience, design, creative problem-solving, and mastering
+            the latest technologies.
+          </p>
+        </div>
       </div>
       <div className={styles.socialButtonsContainer}>
         <a
@@ -32,6 +38,14 @@ export default function InfoContainer() {
           href="mailto: griselalmasanchez@gmail.com"
         >
           <EnvelopeIcon />
+        </a>
+        <a
+          aria-label="github"
+          className={styles.secondaryButton}
+          href="https://github.com/griselsanchez"
+          target="_blank"
+        >
+          <GithubIcon />
         </a>
       </div>
       <a className={styles.primaryButton} href="Grisel-Sanchez-Resume.pdf" target="_blank">
