@@ -1,4 +1,4 @@
-import { GithubIcon, LinkedinIcon, EnvelopeIcon } from 'assets'
+import { LinkedinIcon, EnvelopeIcon } from 'assets'
 
 import styles from './InfoContainer.module.scss'
 
@@ -9,24 +9,16 @@ export default function InfoContainer() {
         <h1 className={styles.title}>Hi, I'm Grisel.</h1>
         <h2 className={styles.subtitle}>A Frontend Engineer.</h2>
         <p>
-          I have four years of experience developing <span id={styles.purple}>performant</span>,{' '}
+          I have 5 years of experience developing <span id={styles.purple}>performant</span>,{' '}
           <span id={styles.orange}>responsive</span>, and <span id={styles.pink}>maintainable</span>{' '}
           digital experiences.
         </p>
         <p>
-          I'm passionate about user interaction, animation, design, problem-solving, and mastering
-          the latest frontend technologies.
+          I'm passionate about user experience, design, creative problem-solving, and mastering
+          the latest technologies.
         </p>
       </div>
       <div className={styles.socialButtonsContainer}>
-        <a
-          aria-label="github"
-          className={styles.secondaryButton}
-          href="https://github.com/griselsanchez"
-          target="_blank"
-        >
-          <GithubIcon />
-        </a>
         <a
           aria-label="linkedin"
           className={styles.secondaryButton}
