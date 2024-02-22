@@ -13,7 +13,7 @@ export default function InfoContainer() {
           <span>I have 5 years of experience developing</span>{' '}
           <AnimatedText text="performant" variant="p" id={styles.purple} />
           <span>,</span>
-          <AnimatedText text="responsive" variant="p" id={styles.orange} />
+          <AnimatedText text="scalable" variant="p" id={styles.orange} />
           <span>, and </span>
           <AnimatedText text="maintainable" variant="p" id={styles.pink} />{' '}
           <span>digital experiences.</span>

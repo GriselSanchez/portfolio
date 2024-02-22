@@ -6,6 +6,7 @@
   @include mixins.flex-center(column);
   flex-basis: 50%;
   height: 100%;
+  gap: .8rem;
 }
 
 .titleContainer {
@@ -40,6 +41,7 @@
 
   #pink {
     color: variables.$pink;
+    margin-right: 0rem
   }
 
 }
