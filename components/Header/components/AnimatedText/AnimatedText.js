@@ -44,9 +44,9 @@ function AnimatedLetter({ children, className, variant }) {
     setIsPlaying(true)
   }
 
-  useEffect(() => {
-    rubberBandAnimation()
-  }, [])
+  //   useEffect(() => {
+  //     rubberBandAnimation()
+  //   }, [])
 
   return (
     <MotionComponent
