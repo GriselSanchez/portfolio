@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useAnimationControls, motion } from 'framer-motion'
 
 import styles from './AnimatedText.module.scss'
@@ -41,6 +41,10 @@ function AnimatedLetter({ children, className, variant }) {
     controls.start('rubber')
     setIsPlaying(true)
   }
+
+  useEffect(() => {
+    controls.start({ transform: item.rubber.transform, transition: { duration: 0.8 } })
+  }, [])
 
   return (
     <MotionComponent
