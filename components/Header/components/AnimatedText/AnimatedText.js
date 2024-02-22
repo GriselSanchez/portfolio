@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useAnimationControls, motion } from 'framer-motion'
 
 import styles from './AnimatedText.module.scss'
@@ -13,7 +13,7 @@ const item = {
       'scale3d(.9, 1.05, 1)',
       'scale3d(1, 1, 1)',
     ],
-    transition: [0, 0.4, 0.6, 0.7, 0.8, 0.9],
+    transition: { duration: 0.5 },
   },
 }
 
@@ -38,15 +38,9 @@ function AnimatedLetter({ children, className, variant }) {
   const MotionComponent = motion[variant]
 
   const rubberBandAnimation = () => {
-    controls.start({
-      ...item.rubber,
-    })
+    controls.start('rubber')
     setIsPlaying(true)
   }
-
-  //   useEffect(() => {
-  //     rubberBandAnimation()
-  //   }, [])
 
   return (
     <MotionComponent
