@@ -1,16 +1,17 @@
+import { motion } from 'framer-motion'
 import { GithubIcon, LinkedinIcon, EnvelopeIcon } from 'assets'
 import AnimatedText from '../AnimatedText/AnimatedText'
 
 import styles from './InfoContainer.module.scss'
 
-export default function InfoContainer() {
+export default function InfoContainer({ x }) {
   return (
-    <div className={styles.leftContainer}>
+    <motion.div className={styles.leftContainer} style={{ x }}>
       <div className={styles.titleContainer}>
         <AnimatedText text="Hi, I'm Grisel." variant="h1" className={styles.title} />
         <AnimatedText text="A Software Engineer." variant="h2" className={styles.subtitle} />
         <div className={styles.description}>
-          <span>I have 5 years of experience developing</span>{' '}
+          <span>I have 7 years of experience developing</span>{' '}
           <AnimatedText text="performant" variant="p" id={styles.purple} />
           <span>,</span>
           <AnimatedText text="scalable" variant="p" id={styles.orange} />
@@ -51,6 +52,6 @@ export default function InfoContainer() {
       <a className={styles.primaryButton} href="Grisel-Sanchez-Resume.pdf" target="_blank">
         Resume
       </a>
-    </div>
+    </motion.div>
   )
 }

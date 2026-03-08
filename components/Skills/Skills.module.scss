@@ -1,0 +1,159 @@
+@use 'styles/variables.scss' as variables;
+@use 'styles/mixins.scss' as mixins;
+
+.main {
+  background-color: variables.$pink;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  padding: 5rem;
+  width: 100vw;
+  gap: 2rem;
+
+  @media (max-width: variables.$lg) {
+    flex-direction: column;
+    padding: 5rem 3rem;
+    gap: 3rem;
+  }
+
+  @media (max-width: variables.$sm) {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.leftContainer {
+  @include mixins.flex-center(column);
+  flex-basis: 40%;
+  flex-shrink: 0;
+  gap: 0.8rem;
+}
+
+.titleContainer {
+  text-align: center;
+  width: 100%;
+}
+
+.title {
+  font-family: 'Press Start 2P', cursive;
+  @include mixins.text-shadow;
+  color: variables.$purple;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  @include mixins.text-shadow;
+  color: variables.$orange;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.rightContainer {
+  @include mixins.flex-center;
+  flex-basis: 60%;
+
+  @media (max-width: variables.$lg) {
+    width: 70%;
+    min-width: 70%;
+  }
+
+  @media (max-width: variables.$sm) {
+    width: 85%;
+    min-width: 85%;
+  }
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: 100%;
+
+  @media (max-width: variables.$sm) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.card {
+  background-color: variables.$yellow;
+  border: 2px solid variables.$black;
+  border-radius: variables.$border-radius;
+  box-shadow: 0.4rem 0.4rem variables.$black;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+
+  &:hover {
+    box-shadow: 0.2rem 0.2rem variables.$black;
+    transform: translate(0.2rem, 0.2rem);
+  }
+}
+
+.cardTitle {
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 0.1rem 0.1rem variables.$black;
+  font-size: 1.2rem;
+  color: variables.$purple;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.cardList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardItem {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: variables.$black;
+
+  &::before {
+    content: '> ';
+    color: variables.$orange;
+    font-weight: 700;
+  }
+}
+
+@media (max-width: variables.$lg) {
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: variables.$md) {
+  .title {
+    font-size: 2rem;
+    text-shadow: 0.15rem 0.15rem variables.$black;
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    text-shadow: 0.1rem 0.1rem variables.$black;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}

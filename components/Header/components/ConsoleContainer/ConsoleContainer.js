@@ -1,11 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import { BucketIcon, EraserIcon, PaintIcon, ResetIcon, Speakers } from 'assets'
 import { usePixelArt, ACTIONS, useDownloadImage } from 'hooks'
 
 import styles from './ConsoleContainer.module.scss'
 import ConsoleButton from './components/ConsoleButton/ConsoleButton'
 
-export default function ConsoleContainer() {
+export default function ConsoleContainer({ x }) {
   const [selectedColor, setSelectedColor] = useState()
   const [action, setAction] = useState(ACTIONS.DRAW)
 
@@ -26,7 +27,7 @@ export default function ConsoleContainer() {
   }, [])
 
   return (
-    <div className={styles.consoleContainer}>
+    <motion.div className={styles.consoleContainer} style={{ x }}>
       <div className={styles.console}>
         <div className={styles.topContainer}>
           <table ref={canvasRef} className={styles.pixelArtTable}>
@@ -98,6 +99,6 @@ export default function ConsoleContainer() {
           <Speakers className={styles.speakers} />
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }

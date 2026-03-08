@@ -6,7 +6,7 @@
   @include mixins.flex-center(column);
   flex-basis: 50%;
   height: 100%;
-  gap: .8rem;
+  gap: 0.8rem;
 }
 
 .titleContainer {
@@ -24,11 +24,13 @@
   align-items: center;
   column-gap: 0.5rem;
 
-  #purple, #orange, #pink {
+  #purple,
+  #orange,
+  #pink {
     font-weight: 600;
     font-size: 1.2rem;
     text-shadow: 1px 1px variables.$black;
-    margin-right: -.5rem
+    margin-right: -0.5rem;
   }
 
   #purple {
@@ -41,9 +43,8 @@
 
   #pink {
     color: variables.$pink;
-    margin-right: 0rem
+    margin-right: 0rem;
   }
-
 }
 
 .title {
@@ -79,12 +80,12 @@
   }
 
   .description {
-    font-size: .9rem;
+    font-size: 0.9rem;
 
     #purple,
     #orange,
     #pink {
-      font-size: .9rem;
+      font-size: 0.9rem;
     }
   }
 }
