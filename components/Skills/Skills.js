@@ -7,19 +7,26 @@ import styles from './Skills.module.scss'
 const skills = [
   {
     category: 'Languages',
-    items: ['JavaScript', 'TypeScript', 'Python', 'SQL', 'HTML / CSS'],
+    items: ['TypeScript', 'Python', 'Java', 'SQL', 'HTML / CSS'],
   },
   {
     category: 'Frontend',
-    items: ['React', 'Next.js', 'SCSS', 'Framer Motion', 'Figma'],
+    items: [
+      'React',
+      'Next.js',
+      'Zustand/Redux',
+      'Jest/React Testing Library/Playwright',
+      'UX/UI Design',
+      'Storybook',
+    ],
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express', 'REST APIs', 'GraphQL'],
+    items: ['Node.js', 'Express', 'NestJS', 'GraphQL', 'MongoDB', 'PostgreSQL'],
   },
   {
     category: 'Tools',
-    items: ['Git', 'Docker', 'AWS', 'Jira', 'VS Code'],
+    items: ['Git', 'Docker', 'AWS', 'Datadog', 'Grafana', 'Figma'],
   },
 ]
 

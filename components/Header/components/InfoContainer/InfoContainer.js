@@ -11,7 +11,9 @@ export default function InfoContainer({ x }) {
         <AnimatedText text="Hi, I'm Grisel." variant="h1" className={styles.title} />
         <AnimatedText text="A Software Engineer." variant="h2" className={styles.subtitle} />
         <div className={styles.description}>
-          <span>I have 7 years of experience developing</span>{' '}
+          <span>
+            I have <b>7 years</b> of experience developing
+          </span>{' '}
           <AnimatedText text="performant" variant="p" id={styles.purple} />
           <span>,</span>
           <AnimatedText text="scalable" variant="p" id={styles.orange} />
@@ -19,8 +21,8 @@ export default function InfoContainer({ x }) {
           <AnimatedText text="maintainable" variant="p" id={styles.pink} />{' '}
           <span>digital experiences.</span>
           <p>
-            I'm passionate about user experience, design, creative problem-solving, and mastering
-            the latest technologies.
+            I'm passionate about <b>user-centered design</b>, <b>accessible interfaces</b>,{' '}
+            <b>creative problem-solving</b>, and building products people love using.
           </p>
         </div>
       </div>
@@ -40,14 +42,14 @@ export default function InfoContainer({ x }) {
         >
           <EnvelopeIcon />
         </a>
-        <a
+        {/* <a
           aria-label="github"
           className={styles.secondaryButton}
           href="https://github.com/griselsanchez"
           target="_blank"
         >
           <GithubIcon />
-        </a>
+        </a> */}
       </div>
       <a className={styles.primaryButton} href="Grisel-Sanchez-Resume.pdf" target="_blank">
         Resume
