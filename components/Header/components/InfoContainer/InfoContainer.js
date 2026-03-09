@@ -21,8 +21,9 @@ export default function InfoContainer({ x }) {
           <AnimatedText text="maintainable" variant="p" id={styles.pink} />{' '}
           <span>digital experiences.</span>
           <p>
-            I'm passionate about <b>user-centered design</b>, <b>accessible interfaces</b>,{' '}
-            <b>creative problem-solving</b>, and building products people love using.
+            I'm passionate about building <b>complex interfaces that feel simple</b>, applying{' '}
+            <b>user-centered thinking</b>, and turning difficult product problems into{' '}
+            <b>creative solutions.</b>.
           </p>
         </div>
       </div>

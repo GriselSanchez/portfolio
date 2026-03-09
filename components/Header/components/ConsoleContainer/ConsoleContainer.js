@@ -27,7 +27,7 @@ export default function ConsoleContainer({ x }) {
   }, [])
 
   return (
-    <motion.div className={styles.consoleContainer} style={{ x }}>
+    <motion.div className={styles.consoleContainer} style={x != null ? { x } : undefined}>
       <div className={styles.console}>
         <div className={styles.topContainer}>
           <table ref={canvasRef} className={styles.pixelArtTable}>

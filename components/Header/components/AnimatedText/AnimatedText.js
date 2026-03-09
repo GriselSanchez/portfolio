@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useAnimationControls, motion } from 'framer-motion'
+import { useAnimationControls, motion, useInView } from 'framer-motion'
 
 import styles from './AnimatedText.module.scss'
 
@@ -18,12 +18,19 @@ const item = {
 }
 
 export default function AnimatedText({ id, text, className, variant }) {
+  const ref = React.useRef(null)
+  const inView = useInView(ref, { once: false })
   const sentence = text.split('')
 
   return (
-    <div className={styles.textContainer} id={id}>
+    <div ref={ref} className={styles.textContainer} id={id}>
       {sentence.map((letter, index) => (
-        <AnimatedLetter key={index} className={className} variant={variant}>
+        <AnimatedLetter
+          key={index}
+          className={className}
+          variant={variant}
+          animateWhen={inView}
+        >
           {letter === ' ' ? '\u00A0' : letter}
         </AnimatedLetter>
       ))}
@@ -31,7 +38,7 @@ export default function AnimatedText({ id, text, className, variant }) {
   )
 }
 
-function AnimatedLetter({ children, className, variant }) {
+function AnimatedLetter({ children, className, variant, animateWhen }) {
   const controls = useAnimationControls()
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -42,9 +49,15 @@ function AnimatedLetter({ children, className, variant }) {
     setIsPlaying(true)
   }
 
-  useEffect(() => {
+  const runMountAnimation = () => {
     controls.start({ transform: item.rubber.transform, transition: { duration: 0.8 } })
-  }, [])
+  }
+
+  useEffect(() => {
+    if (animateWhen) {
+      runMountAnimation()
+    }
+  }, [animateWhen])
 
   return (
     <MotionComponent
